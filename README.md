@@ -8,9 +8,9 @@
 
 ##### Keys terms and definitions
 ##### •	Individual membership vs. corporate membership
-#####  o	types of memberships and cost/price
+#####     o	types of memberships and cost/price
 ##### •	Direct membership
-#####  o	Individual purchases IAPP membership directly as a distinct and stand alone item with a cost associated with the purchase
+#####     o	Individual purchases IAPP membership directly as a distinct and stand alone item with a cost associated with the purchase
 ##### •	Indirect membership
 #####  o	Individual purchases IAPP membership indirectly, i.e. Part of a product bundle, free membership via promotion, part of an OTP (Outside Training Partner) kit
 ##### •	Bundle – indirect direct – membership is part of a training and certification bundle – membership is ‘added on’ as an added free product
