@@ -8,7 +8,7 @@
 
 ##### Keys terms and definitions
 ##### •	Individual membership vs. corporate membership
-#####     o	types of memberships and cost/price
+#####   "\t" o	types of memberships and cost/price
 ##### •	Direct membership
 #####     o	Individual purchases IAPP membership directly as a distinct and stand alone item with a cost associated with the purchase
 ##### •	Indirect membership
