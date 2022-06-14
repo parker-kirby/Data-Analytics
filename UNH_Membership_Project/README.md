@@ -27,11 +27,11 @@ Following this directory structure
     |
     |--src
     |   |
-    |   |--features                       <- Scripts for turning raw and external data into model-ready data
-    |   |   |--build_features.r
+    |   |--main                      <- Scripts for main data analysis
+    |   |   |--build_main.r
     |   |
-    |   |--models                         <- Scripts for training and saving models
-    |   |   |--train_model.r
+    |   |--graphs                        <- Scripts for graphs and visualizations (if any)
+    |   |   |--graph_model.r
     |   |
     |
     |
