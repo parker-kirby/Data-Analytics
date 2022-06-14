@@ -2,7 +2,7 @@
 
 #### Investigate direct membership vs indirect memberships
 
-'''
+```
 H1: There is a correlation between renewal/retention rate and path of purchase
 H2: Indirect memberships are not as ‘sticky’ as direct memberships (sticky = renewal and retention). 
 H3: Indirect membership renew or retain membership at a lower rate than direct memberships.
@@ -27,4 +27,4 @@ Key deliverables:
     o	Direct
     o	Indirect
 • Bundle, Free, OTP kit
-'''
+```
