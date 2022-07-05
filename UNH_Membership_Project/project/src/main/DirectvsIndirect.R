@@ -37,6 +37,8 @@ comped2 <- data[data$`Product: Product Name` %in% membership_list & data$`Unit P
 
 Final_Comp<- rbind(comped1, comped2)
 
+students <- Final_Comp[Final_Comp$`Product: Product Name` == "Student"]
+
 #########################################################################################################
 #Indirect Bundle
 
