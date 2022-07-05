@@ -43,7 +43,8 @@ data_2 <- data[data$`Order Id` == "Order 0432947"]
 #########################################
 
 data_3 <- data[data$`Product: Record Type` == "Coupon"]
-data_4 <- data[data$`Unique ID` == "280188"]
+data_4 <- data[data$`Unique ID` == "305058"]
+data_4 <- data[data$`Unique ID` == "340858"]
 
 data <- data[data$`Product: Record Type` == "Coupon" & data$`Unit Price` < 0]
 
