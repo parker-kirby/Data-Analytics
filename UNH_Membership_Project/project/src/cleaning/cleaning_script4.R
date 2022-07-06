@@ -46,6 +46,10 @@ data_3 <- data[data$`Product: Record Type` == "Coupon"]
 data_4 <- data[data$`Unique ID` == "34049"]
 data_4 <- data[data$`Unique ID` == "320160"]
 
+data_4 <- data[data$`Unique ID` == "305058"]
+data_4 <- data[data$`Unique ID` == "340858"]
+
+
 data <- data[data$`Product: Record Type` == "Coupon" & data$`Unit Price` < 0]
 
 #########################################
