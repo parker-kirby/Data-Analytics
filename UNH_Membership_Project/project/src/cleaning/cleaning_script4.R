@@ -16,6 +16,7 @@ data <- data[data$`Product: Record Type` != "Donation"]
 data <- data[data$`Product: Record Type` != "Coupon"]
 data <- data[!(data$`Product: Category` == "Book" & data$`Unit Price` == 0)]
 data <- data[!(data$`Product: Category` == "ebook" & data$`Unit Price` == 0)]
+data <- data[!(data$`Product: Category` == "White Paper" & data$`Unit Price` == 0)]
 
 #Converting date formats and specifying our date range
 data$`Created Date`<- as.Date(data$`Created Date`, "%m/%d/%Y")
@@ -36,10 +37,10 @@ data <- data[, remove:=NULL, with=FALSE]
 
 unique(data$`Product: Record Type`)
 
-data_1 <- data[data$`Order Id` == "Order 0252642"]
+data_1 <- data[data$`Order Id` == "Order 0206298"]
 
 ###############CASE######################
-data_2 <- data[data$`Order Id` == "Order 0170786"]
+data_2 <- data[data$`Order Id` == "Order 0029542"]
 #########################################
 
 data_3 <- data[data$`Product: Record Type` == "Coupon"]

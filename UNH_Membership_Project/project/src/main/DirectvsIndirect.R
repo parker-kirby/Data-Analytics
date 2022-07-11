@@ -19,15 +19,42 @@ non_use = c(data_list$`Order Id`)
 Final_Direct <- direct[direct$`Order Id` %notin% non_use]
 Final_Direct <- Final_Direct[!(duplicated(Final_Direct$`Order Id`))]
 
-
 ##########################################################################################################
 #Indirect OTP
 
 #data$OTP_indirect[duplicated(data$`Order Id`) & data$`Unit Price` == 0 & data$`Total Payment` == 0] <- 1
 
-OTP_indirect <- data[(duplicated(data$`Order Id`) | duplicated(data$`Order Id`, fromLast = TRUE)) & data$`Unit Price` == 0 & data$`Total Payment` == 0]
+OTP_indirect1 <- data[(duplicated(data$`Order Id`) | duplicated(data$`Order Id`, fromLast = TRUE)) & data$`Unit Price` == 0 & data$`Total Payment` == 0]
+#OTP_indirect2 <- data[data$`Product: Product Name` %in% membership_list & (duplicated(data$`Order Id`) | duplicated(data$`Order Id`, fromLast = TRUE)) & data$`Unit Price`> 0 
+ #                     & data$`Total Payment` == data$`Unit Price` & data$`Transaction Date` < as.Date('2019-01-01') ]
 
-Final_OTP <- OTP_indirect[OTP_indirect$`Product: Product Name` %in% membership_list]
+
+#############################################################################################################
+#############################################################################################################
+#############################################################################################################
+OTP_indirect2 <- data[data$`Product: Product Name` %in% membership_list & (duplicated(data$`Order Id`) | duplicated(data$`Order Id`, fromLast = TRUE)) & data$`Unit Price`> 0]
+
+OTP_indirect3 <- data[(duplicated(data$`Order Id`) | duplicated(data$`Order Id`, fromLast = TRUE)) & data$`Unit Price` == 0 & data$`Product: Product Name` %notin% membership_list & data$`Total Payment` > 0]
+
+orderup <- rbind(OTP_indirect2, OTP_indirect3)
+
+orderup <- orderup[(duplicated(orderup$`Order Id`) | duplicated(orderup$`Order Id`, fromLast = TRUE))]
+
+listed <- orderup$`Order Id`[orderup$`Product: Product Name` %in% membership_list]
+
+orderup <- orderup[orderup$`Order Id` %in% listed]
+
+listed2 <- orderup$`Order Id`[orderup$`Unit Price` == 0]
+
+orderup <- orderup[orderup$`Order Id` %in% listed2]
+
+listed3 <- orderup$`Order Id`[orderup$`Product: Product Name` == "CIPP/E Test Center Exam (First-Time Candidate)"]
+
+Werid_OTPs <- orderup[orderup$`Order Id` %in% listed3]
+
+#############################################################################################################
+#############################################################################################################
+#############################################################################################################
 
 
 #########################################################################################################
@@ -37,7 +64,7 @@ comped2 <- data[data$`Product: Product Name` %in% membership_list & data$`Unit P
 
 Final_Comp<- rbind(comped1, comped2)
 
-students <- Final_Comp[Final_Comp$`Product: Product Name` == "Student"]
+Final_Comp[Final_Comp$`Order Id` == "Order 0055506"]
 
 #########################################################################################################
 #Indirect Bundle
@@ -50,6 +77,7 @@ bundle2 <- bundle2[bundle2$`Order Id` %in% non_use]
 Final_Bundle <- rbind(bundle1, bundle2)
 Final_Bundle <- Final_Bundle[(!(duplicated(Final_Bundle$`Order Id`)))]
 
+Final_Bundle[Final_Bundle$`Order Id` == "Order 0191672"]
 
 #Write out our final tables
 fwrite(Final_Direct, './UNH_Membership_Project/project/volume/data/processed/Final_Direct.csv')
