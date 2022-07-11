@@ -37,10 +37,10 @@ data <- data[, remove:=NULL, with=FALSE]
 
 unique(data$`Product: Record Type`)
 
-data_1 <- data[data$`Order Id` == "Order 0206298"]
+data_1 <- data[data$`Order Id` == "Order 0613414"]
 
 ###############CASE######################
-data_2 <- data[data$`Order Id` == "Order 0029542"]
+data_2 <- data[data$`Order Id` == "Order 0314071"]
 #########################################
 
 data_3 <- data[data$`Product: Record Type` == "Coupon"]
