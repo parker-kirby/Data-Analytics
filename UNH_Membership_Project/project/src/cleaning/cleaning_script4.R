@@ -10,7 +10,6 @@ data <- distinct(data)
 data <- data[data$`Account Record Type` == "Individual"]
 data <- data[data$`Membership Category` == "Individual"]
 data <- data[data$Status == "Active"]
-data <- data[data$`Member Type` != "Individual Green Membership"]
 data <- data[data$`Member Type` != "Press"]
 data <- data[data$`Product: Record Type` != "Donation"]
 data <- data[data$`Product: Record Type` != "Coupon"]
@@ -26,26 +25,26 @@ data <- data[data$`Transaction Date` < as.Date('2022-01-01')]
 
 
 #removing columns that aren't important
-remove <- c("OTP", "Designation", "Default Country", "Product: Short Name", "Account Safe Id", 
-            "Account Safe Id-1", "Account Record Type-1", "Member-1", "Member Type-1", "Status", 
-            "Person Account: Lead Source", "Certified", "Member", "Product: Category")
+remove <- c( "Product: Short Name", "Account Safe Id", 
+            "Account Safe Id-1", "Status",
+            "Certified", "Member", "Product: Category")
 data <- data[, remove:=NULL, with=FALSE]
 
 #########################################
 ###############TESTING###################
 #########################################
 
-unique(data$`Product: Record Type`)
+unique(data$`Membership Status`)
 
-data_1 <- data[data$`Order Id` == "Order 0613414"]
+data_1 <- data[data$`Order Id` == "Order 1336141"]
 
 ###############CASE######################
-data_2 <- data[data$`Order Id` == "Order 0314071"]
+data_2 <- data[data$`Order Id` == "Order 0149933"]
 #########################################
 
 data_3 <- data[data$`Product: Record Type` == "Coupon"]
-data_4 <- data[data$`Unique ID` == "34049"]
-data_4 <- data[data$`Unique ID` == "320160"]
+data_4 <- data[data$`Account Safe Id` == "0011P00001CO2w0QAD"]
+data_4 <- data[data$`Unique ID` == "313390"]
 
 data_4 <- data[data$`Unique ID` == "305058"]
 data_4 <- data[data$`Unique ID` == "340858"]

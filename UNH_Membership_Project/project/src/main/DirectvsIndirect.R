@@ -1,10 +1,12 @@
 #Direct vs Indirect Memberships
 
-data <- fread('./UNH_Membership_Project/project/volume/data/intrim/cleaned_data.csv')
+data <- fread('./UNH_Membership_Project/project/volume/data/interim/cleaned_data.csv')
 
 membership_list = c("Professional", "Not-For-Profit", "Government", "Higher Education", "Retired", "Transitional", "Student")
 
 kindasus <- data[data$`Product: Product Name` %in% membership_list]
+kindasus <- kindasus[!duplicated(kindasus$`Order Id`)]
+'%notin%' <- Negate('%in%')
 
 #############################################################################################################
 #############################################################################################################
@@ -56,7 +58,6 @@ direct <- data[data$`Product: Product Name` %in% membership_list & data$`Unit Pr
 
 #Get rid of records in data list
 non_use = c(data_list$`Order Id`)
-'%notin%' <- Negate('%in%')
 
 Final_Direct <- direct[direct$`Order Id` %notin% non_use]
 Final_Direct <- Final_Direct[!(duplicated(Final_Direct$`Order Id`))]
@@ -105,6 +106,13 @@ Final_Bundle <- rbind(bundle1, notinbundle2)
 Final_Bundle <- Final_Bundle[(!(duplicated(Final_Bundle$`Order Id`)))]
 
 
+canwefindem <- bind_rows(Final_Direct, Final_OTP, Final_Comp, Final_Bundle)
+
+listed5 <- canwefindem$`Order Id`
+here <- kindasus[kindasus$`Order Id` %notin% listed5]
+
+Final_Comp <- rbind(Final_Comp, here)
+
 #Write out our final tables
 fwrite(Final_Direct, './UNH_Membership_Project/project/volume/data/processed/Final_Direct.csv')
 fwrite(Final_OTP, './UNH_Membership_Project/project/volume/data/processed/Final_OTP.csv')
@@ -114,7 +122,3 @@ fwrite(Final_Bundle, './UNH_Membership_Project/project/volume/data/processed/Fin
 
 
 
-##############
-#Troublesome
-trouble1 <- data[data$`Unit Price` > data$`Total Payment` & data$`Total Payment` != 0 & data$`Product: Product Name` %in% membership_list]
-trouble2 <- 
